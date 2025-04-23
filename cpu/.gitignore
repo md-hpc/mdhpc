@@ -1,0 +1,8 @@
+*.csv
+*.gif
+*.pdb
+*.out
+*.swp
+**/particles
+**/sim
+**/scrap
