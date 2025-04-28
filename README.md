@@ -14,9 +14,28 @@ Some important things to look out for when programming CPU:
 
 __SIMD Vector consolidating operations__: This happens when the data your SIMD operations are using are not stored contiguously in memory (e.g., it's a linked list), and it is horrible for performance. CPUs have the capability to load an entire SIMD vector's data in a single instruction if the data is aligned and contiguous, and not letting it do that will cause your memory performance to take an ~8x hit.
 
-__Cache coherence misses__: this happens when multiple threads are writing to the same address or same cache block. Doing so will immediately cause that block to be invalidated in all other L2 and L1 caches, causing those secitons to only achieve L3-levels of memory performance.
+__Cache coherence misses__: This happens when multiple threads are writing to the same address or same cache block. Doing so will immediately cause that block to be invalidated in all other L2 and L1 caches, causing those secitons to only achieve L3-levels of memory performance.
 
 __Thread affinity__: Linux threads are suitable for high-performance environments, but only if you use proper thread affinity. Otherwise, a thread may be migrated to another core, invalidating all of its L1 and L2 cache. Using pthread_setaffinity_np, you can avoid this problem.
+
+## GPU 
+
+This subproject implements a molecular dynamics simulator optimized for GPU acceleration, leveraging CUDA to exploit parallelism available on GPUs. There are several implementations of force compuation using different levels of optimization including naive methods (O(n^2)) and cell list-based methods to reduce memory overhead and reduce calculations. Spacial decompositions strategies and shared memory are used to accelerate the molecular dynamics simulation.  The following files correspond to the following implementations:
+* `nsquared.cu`: n^2, no shared memory
+* `nsquared_shared.cu`: n^2, shared memory
+* `nsquared_n3l.cu`: n^2, shared memory, Newton's 3rd Law optimization
+* `cell_list.cu`: cell list, shared memory
+* `cell_list_n3l.cu`: cell list, shared memory, Newton's 3rd Law optimization
+
+Some important things to look out for when programming an NVIDIA GPU:
+
+__Compute Capabililty__: The compute capability of an NVIDIA GPU describes the hardware attributes that limit what the programmer can do in software. For example, there is a maximum of 1024 threads per thread block. The programmer must decompose their problem domain in a way that takes into account the compute capability of the GPU they are running on in order to have the best performance on that GPU.
+
+__Memory coalescing__:
+rganizinig memory accesses so that threads access continguous memory addresses is critical for performant GPU code. Poor memory access patterns cause stalls due to uncoalsced memory loads which drastically reduces throughput.
+
+__Shared memory utilization__:
+This reduces the number of global memory accesses which are expensive, but careful management is needed to avoid bank conflicts.
 
 ## FPGA
 

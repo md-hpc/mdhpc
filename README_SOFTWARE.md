@@ -60,7 +60,7 @@ Several other files implement object and functions that are used by `Simulation`
 Molecular dynamics (MD) simulates particle-level interactions in physical systems using Newtonian mechanics over discrete timesteps, offering deep insight into biological structures and behaviors. While MD maps well to parallel architectures, the dense short-range interactions, such as the Lennard-Jones potential, make efficient hardware implementation challenging. In this project, we optimize MD for FPGA by designing a parameterizable, ring-connected architecture that balances performance, resource usage, and routing simplicity.
 
 
-###Prerequisites
+### Prerequisites
 
 * Vitis 2023.1
 * Network Layer build file
