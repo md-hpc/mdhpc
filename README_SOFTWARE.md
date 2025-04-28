@@ -63,6 +63,7 @@ Several other files implement object and functions that are used by `Simulation`
     * numpy
 
 ### Flowchart
+<img width="80%" alt="Screenshot_2025-04-27_at_9 36 56_PM" src="https://github.com/user-attachments/assets/431cb8a9-2234-4d71-b6f5-1dd183b1a5e7" />
 
 ### Installation
 
