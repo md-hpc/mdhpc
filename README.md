@@ -5,6 +5,9 @@ MDHPC is a project that explores high-performance methods for computing the rang
 ## CPU
 
 Having the most flexiblitiy out of the three platforms, this subproject contains several implementations using a number of different approaches to test efficacy. There are three algorithms: naive (no cutoff radius, O(n^2) complexity), cell lists, and neighbor lists. For each of these we implemented both a scalar and SIMD code. The following subdirectories correspond to the following implementations:
+* `n2`: N^2 Serial Version
+* `n2-vec`: SIMD & Pthreaded N^2
+* `n2-mpi`: SIMD & MPI N^2
 * `cells`: Cell lists, no SIMD
 * `neighbors`: Neighbor lists, no SIMD
 * `simd`: Cell lists, SIMD
