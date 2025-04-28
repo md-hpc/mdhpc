@@ -112,7 +112,7 @@ For the current implementation, which is optimized for a universe size of 3x3x3,
 
 ### Installation
 
-Please note that initiale position and velocity values for the particles must be set in the BRAM_INIT.txt file in hexadecimal format, containing the position followed by velocity (each being a set of 3 8-character long strings), and then 2 characters for BRAM selection, and finally 3 characters for the BRAM address.
+Please note that initiate position and velocity values for the particles must be set in the BRAM_INIT.txt file in hexadecimal format, containing the position followed by velocity (each being a set of 3 8-character long strings), and then 2 characters for BRAM selection, and finally 3 characters for the BRAM address.
 
 To build the simulator, run ```make```. Please give up to 24 hours as the build time is quite significant to match timing and minimize wire congestion and resource usage.
 
